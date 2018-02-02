@@ -1,4 +1,4 @@
-package tv.sporttotal.androidtv.bootstrap
+package tv.sporttotal.toothpick.kotlin
 
 import toothpick.config.Binding
 import toothpick.config.Module
