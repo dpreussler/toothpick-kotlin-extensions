@@ -20,10 +20,9 @@ inline fun <reified T> Module.bindProviderInstance(noinline target: () -> T): Bi
     toProviderInstance(target.asProvider()) }
 
 fun <T> (() -> T).asProvider(): Provider<T> {
-    val receiver = this
     return object : Provider<T> {
         override fun get(): T {
-            return receiver.invoke()
+            return invoke()
         }
     }
 }
