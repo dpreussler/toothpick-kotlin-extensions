@@ -14,5 +14,17 @@ inline fun <reified T> Module.bindInstance(target: () -> T): Binding<T> = bind<T
 inline fun <reified T> Module.bindProvider(target: () -> Class<out Provider<T>>): Binding<T> = bind<T>().apply { toProvider(target()) }
 inline fun <reified T> Module.bindProvider(target: KClass<out Provider<T>>): Binding<T> = bind<T>().apply { toProvider(target.java) }
 inline fun <reified T> Module.bindProvider(target: Class<out Provider<T>>): Binding<T> = bind<T>().apply { toProvider(target) }
-inline fun <reified T> Module.bindProviderInstance(target: () -> Provider<T>): Binding<T> = bind<T>().apply { toProviderInstance(target()) }
+inline fun <reified T> Module.bindProviderInstance(target: Provider<T>): Binding<T> = bind<T>().apply { toProviderInstance(target) }
+
+inline fun <reified T> Module.bindProviderInstance(noinline target: () -> T): Binding<T> = bind<T>().apply {
+    toProviderInstance(target.asProvider()) }
+
+fun <T> (() -> T).asProvider(): Provider<T> {
+    val receiver = this
+    return object : Provider<T> {
+        override fun get(): T {
+            return receiver.invoke()
+        }
+    }
+}
 
