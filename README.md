@@ -3,7 +3,7 @@
 
 
 # Toothpick Kotlin extensions
-Kotlin sprinkles over Toothpick dependency injection library  
+Kotlin sprinkles over [Toothpick](https://github.com/stephanenicolas/toothpick) dependency injection library 
 
 define your modules like this:
 
@@ -11,6 +11,7 @@ define your modules like this:
 module {
     bind<Repository>(DataBaseRepository::class)
     bindInstance<Scheduler>(DefaultScheduler())
+    bindProviderInstance(ApiProvider())
     bindProviderInstance<Api>{ RestApi() }
 }
 ```
