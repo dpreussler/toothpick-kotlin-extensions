@@ -95,7 +95,7 @@ repositories {
     maven {url "https://jitpack.io"}
 }
 
-compile 'com.github.sporttotal-tv:toothpick-kotlin-extensions:master-SNAPSHOT'	
+compile 'com.github.sporttotal-tv:toothpick-kotlin-extensions:0.1'	
 
 ```
 
