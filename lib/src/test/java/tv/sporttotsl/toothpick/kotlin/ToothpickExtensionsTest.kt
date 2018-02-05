@@ -41,15 +41,14 @@ class ToothpickExtensionsTest {
             bindClass<Repository>(DataBaseRepository::class.java)
         }
 
-        val anotherScope : Scope = scope("") {
+        val anotherScope : Scope = scope("", {
             module {
                 bindClass<Repository>(DataBaseRepository::class.java)
             }
-
             module {
                 bindProviderInstance(ApiProvider())
             }
-        }
+        })
     }
 
     interface Api

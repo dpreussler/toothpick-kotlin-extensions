@@ -34,5 +34,5 @@ fun module(bindings: Module.() -> Binding<*>?) : Module = Module().apply { bindi
 fun simpleScope(scopeName: Any, bindings: Module.() -> Binding<*>?) : Scope
         = Toothpick.openScope(scopeName).apply { Module().apply { bindings() }}
 
-fun scope(scopeName: Any, bindings: Scope.() -> Module?) : Scope
-        = Toothpick.openScope(scopeName).apply { Module().apply { bindings() }}
+fun scope(scopeName: Any, vararg bindings: Scope.() -> Module?) : Scope
+        = Toothpick.openScope(scopeName).apply { Module().apply { bindings.forEach { it() } }}

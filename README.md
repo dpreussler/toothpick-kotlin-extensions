@@ -35,7 +35,7 @@ module {
 if you have a single modile, you can directly use the bindings in the scope definition:
 
 ```kotlin
-simpleScope {
+simpleScope(SCOPE) {
     // bindings
 }
 ```
@@ -44,14 +44,14 @@ or add multiple modules:
 
 
 ```kotlin
-scope {
+scope(SCOPE, {
     module {
         // bindings
     }
     module {
         // bindings
     }
-}
+})
 ```
 
 ## binding to classes
