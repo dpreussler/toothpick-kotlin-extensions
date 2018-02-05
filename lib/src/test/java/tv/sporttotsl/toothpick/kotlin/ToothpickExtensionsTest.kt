@@ -7,6 +7,7 @@ import javax.inject.Provider
 
 class ToothpickExtensionsTest {
 
+    var nullable : String? = null
 
     @Test
     fun `call all the things`() {
@@ -21,7 +22,11 @@ class ToothpickExtensionsTest {
             bindInstance<Scheduler> { DefaultScheduler() }
 
             bindProviderInstance(ApiProvider())
-            bindProviderInstance<Api>{ RestApi() }
+
+            nullable?.let {
+                bindProviderInstance<Api>{ RestApi() }
+            }
+
         }
     }
 

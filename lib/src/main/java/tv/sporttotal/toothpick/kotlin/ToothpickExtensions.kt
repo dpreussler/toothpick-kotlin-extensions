@@ -27,5 +27,5 @@ fun <T> (() -> T).asProvider(): Provider<T> {
     }
 }
 
-fun module(bindings: Module.() -> Binding<*>) : Module = Module().apply { bindings() }
+fun module(bindings: Module.() -> Binding<*>?) : Module = Module().apply { bindings() }
 
