@@ -1,6 +1,7 @@
 package tv.sporttotsl.toothpick.kotlin.test
 
 import org.junit.Test
+import toothpick.Scope
 import toothpick.config.Module
 import tv.sporttotal.toothpick.kotlin.*
 import javax.inject.Provider
@@ -12,6 +13,7 @@ class ToothpickExtensionsTest {
     @Test
     fun `call all the things`() {
 
+        @Suppress("UNUSED_VARIABLE")
         val newModule : Module = module {
 
             bind<Repository>().to(DataBaseRepository::class.java)
@@ -28,7 +30,25 @@ class ToothpickExtensionsTest {
             nullable?.let {
                 bindProviderInstance<Api>{ RestApi() }
             }
+        }
+    }
 
+    @Test
+    fun `create scope`() {
+        @Suppress("UNUSED_VARIABLE")
+
+        val aSimpleScope : Scope = simpleScope("") {
+            bindClass<Repository>(DataBaseRepository::class.java)
+        }
+
+        val anotherScope : Scope = scope("") {
+            module {
+                bindClass<Repository>(DataBaseRepository::class.java)
+            }
+
+            module {
+                bindProviderInstance(ApiProvider())
+            }
         }
     }
 

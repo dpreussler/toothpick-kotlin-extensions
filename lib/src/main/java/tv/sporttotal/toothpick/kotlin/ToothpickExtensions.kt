@@ -1,5 +1,7 @@
 package tv.sporttotal.toothpick.kotlin
 
+import toothpick.Scope
+import toothpick.Toothpick
 import toothpick.config.Binding
 import toothpick.config.Module
 import javax.inject.Provider
@@ -29,3 +31,8 @@ fun <T> (() -> T).asProvider(): Provider<T> {
 
 fun module(bindings: Module.() -> Binding<*>?) : Module = Module().apply { bindings() }
 
+fun simpleScope(scopeName: Any, bindings: Module.() -> Binding<*>?) : Scope
+        = Toothpick.openScope(scopeName).apply { Module().apply { bindings() }}
+
+fun scope(scopeName: Any, bindings: Scope.() -> Module?) : Scope
+        = Toothpick.openScope(scopeName).apply { Module().apply { bindings() }}
