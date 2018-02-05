@@ -11,6 +11,7 @@ define your modules like this:
 module {
     bind<Repository>(DataBaseRepository::class)
     bindInstance<Scheduler>(DefaultScheduler())
+    bindProvider(ApiProvider::class)
     bindProviderInstance(ApiProvider())
     bindProviderInstance<Api>{ RestApi() }
 }
@@ -78,6 +79,8 @@ Use generics:
 use type inference (as provider is already generic):
 
 ```kotlin
+    bindProvider(ApiProvider::class)
+    
     bindProviderInstance(ApiProvider())
 ```
 

@@ -21,6 +21,8 @@ class ToothpickExtensionsTest {
 
             bindInstance<Scheduler> { DefaultScheduler() }
 
+            bindProvider(ApiProvider::class)
+
             bindProviderInstance(ApiProvider())
 
             nullable?.let {
