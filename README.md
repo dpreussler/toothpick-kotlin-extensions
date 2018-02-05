@@ -25,14 +25,14 @@ Module().apply {
     // bindings
 }
 ```
-use a method and a lambda
+use this method with a lambda
 ```kotlin
 module {
     // bindings
 }
 ```
 
-if you have a single modile, you can directly use the bindings in the scope definition:
+Or if you have a single module, you can directly use the bindings in the scope definition:
 
 ```kotlin
 simpleScope(SCOPE) {
