@@ -32,7 +32,7 @@ fun <T> (() -> T).asProvider(): Provider<T> {
 fun module(bindings: Module.() -> Binding<*>?) : Module = Module().apply { bindings() }
 
 fun simpleScope(scopeName: Any, bindings: Module.() -> Binding<*>?) : Scope
-        = Toothpick.openScope(scopeName).apply { Module().apply { bindings() }}
+        = Toothpick.openScope(scopeName).apply { installTestModules(Module().apply { bindings() })}
 
 fun scope(scopeName: Any, vararg bindings: Scope.() -> Module?) : Scope
-        = Toothpick.openScope(scopeName).apply { Module().apply { bindings.forEach { it() } }}
+        = Toothpick.openScope(scopeName).apply { bindings.forEach { installModules(it()) }}

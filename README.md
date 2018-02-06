@@ -120,7 +120,7 @@ repositories {
     maven {url "https://jitpack.io"}
 }
 
-compile 'com.github.sporttotal-tv:toothpick-kotlin-extensions:0.2.1'	
+compile 'com.github.sporttotal-tv:toothpick-kotlin-extensions:0.2.2'	
 
 ```
 
